@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Analysis Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Analysis Result</h1>
+
+        {% if review %}
+            <p><strong>Review:</strong> {{ review }}</p>
+            <p><strong>Sentiment:</strong> {{ sentiment }}</p>
+            <p><strong>Polarity Score:</strong> {{ score }}</p>
+        {% elif results %}
+            <ul>
+            {% for r in results %}
+                <li>
+                    <p><strong>Review:</strong> {{ r.review }}</p>
+                    <p><strong>Sentiment:</strong> {{ r.sentiment }} (Score: {{ r.score }})</p>
+                </li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+
+        <a href="/">🔙 Back to Home</a>
+    </div>
+</body>
+</html>
